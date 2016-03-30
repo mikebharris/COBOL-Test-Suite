@@ -3,13 +3,13 @@ program-id. AssertNotEquals is initial.
 
 data division.
 linkage section.
-01 ResultExpected pic x any length.
-01 ResultReturned pic x any length.
-01 TestDescription pic x any length.
+01 ResultExpected any numeric.
+01 ResultReturned any numeric.
+01 TestDescription any length.
 
-procedure division using by value ResultReturned,
-                         by value ResultExpected,
-                         by value TestDescription.
+procedure division using ResultReturned,
+                         ResultExpected,
+                         TestDescription.
 
     if ResultReturned not equal to ResultExpected then
         display "Passed: " TestDescription
