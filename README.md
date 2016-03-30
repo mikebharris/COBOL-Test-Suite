@@ -13,10 +13,25 @@ $ cobc --free AssertEquals.cbl
 $ cobc --free AssertNotEquals.cbl 
 $ cobc -x --free COBOLTestSuiteTest.cbl 
 $ ./COBOLTestSuiteTest 
-Passed: 5 = 5 should pass
-Failed: 5 != 6 should fail
-Passed: 5 != 6 should pass
-Failed: 5 != 5 should fail
+AssertEquals tests
+------------------
+Passed: integers 5 = 5 should pass
+Failed: integers 5 != 6 should fail (expected +0000000006, got +0000000005)
+Passed: strings 5 = 5 should pass
+Failed: strings 5 != 6 should fail (expected 6, got 5)
+Failed: integer 5 = string 5 should fail (expected 5, got +0000000005)
+Failed: strings foo = bar should fail (expected bar, got foo)
+Passed: strings fubar = fubar should pass
+ 
+AssertNotEquals tests
+------------------
+Passed: integers 5 != 6 should pass
+Failed: integers 5 != 5 should fail
+Passed: strings 5 != 6 should pass
+Failed: strings 5 != 5 should fail
+Passed: string 5 != integer 6 should pass
+Passed: foo != bar should pass
+Failed: fubar != fubar should fail
 $
 ```
 
