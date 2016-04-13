@@ -11,7 +11,7 @@ procedure division using ResultReturned,
                          ResultExpected,
                          TestDescription.
 
-    if ResultReturned not equal to ResultExpected then
+    if function trim(ResultReturned) not equal to function trim(ResultExpected) then
         display "Passed: " TestDescription
     else
         display "Failed: " TestDescription
