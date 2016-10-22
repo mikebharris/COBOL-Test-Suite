@@ -1,6 +1,15 @@
 identification division.
 program-id. COBOLTestSuiteTest.
 
+data division.
+working-storage section.
+01 AddressRecord.
+    02 AddressLine1 pic x(20) value spaces.
+    02 AddressLine2 pic x(20) value spaces.
+    02 City         pic x(20) value spaces.
+    02 Country      pic x(20) value spaces.
+    02 Postcode     pic x(10) value spaces.
+
 procedure division.
 
     display "AssertEquals tests:"
@@ -32,11 +41,21 @@ procedure division.
     call "AssertContains" using "The quick brown fox jumps over the lazy dog", "brown", "'brown' is in the string"
     call "AssertContains" using "The quick brown fox jumps over the lazy dog", "pink", "'pink' is not in the string"
 
+    move "29 Acacia Road" to AddressLine1
+    move "Nuttytown" to City
+    move "NU1 3QT" to Postcode
+
+    call "AssertContains" using AddressRecord, "NU1 3QT", "'NU1 3QT' is in the address"
+    call "AssertContains" using AddressRecord, "Wonkyton", "'Wonkyton' is not in the address"
+
     display spaces
     display "AssertNotContains tests:"
 
     call "AssertNotContains" using "The quick brown fox jumps over the lazy dog", "pink", "'pink' is not in the string"
     call "AssertNotContains" using "The quick brown fox jumps over the lazy dog", "brown", "'brown' is in the string"
+
+    call "AssertNotContains" using AddressRecord, "Wonkyton", "'Wonkyton' is not in the address"
+    call "AssertNotContains" using AddressRecord, "NU1 3QT", "'NU1 3QT' is in the address"
 
     stop run.
 
