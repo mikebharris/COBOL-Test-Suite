@@ -8,7 +8,7 @@ configuration section.
 
 input-output section.
     file-control.
-        select CustomersFile assign to "Customers.dat"
+        select optional CustomersFile assign to "Customers.dat"
             organization is relative
             access mode is dynamic
             record key is CustomerId

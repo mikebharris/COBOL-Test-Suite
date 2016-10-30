@@ -8,3 +8,5 @@ COBOLTestSuiteTest
 *.dat
 
 examples/Customer-using-Entry/CustomersTest
+
+examples/Customer-using-Evaluate/CustomersTest
