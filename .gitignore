@@ -2,3 +2,9 @@
 *.dylib
 
 COBOLTestSuiteTest
+
+*.bak
+
+*.dat
+
+examples/Customer-using-Entry/CustomersTest
