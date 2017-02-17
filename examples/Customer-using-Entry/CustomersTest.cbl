@@ -29,9 +29,12 @@ SetupInitialData.
     move "07123456789" to Mobile of CustomerExpected
     move "Micky Mouse" to Contact of CustomerExpected.
 
+LikeAnObjectInstantiation.
+    call "Customers".
+
 InitialiseCustomersFile.
     move "Clientes.dat" to CustomersFileName
-    call "Customers" using CustomersFileName.
+    call "SetCustomerFileName" using CustomersFileName.
 
 TestCanAddACustomer.
     call "AddCustomer" using by content CustomerExpected, by reference FirstCustomerId

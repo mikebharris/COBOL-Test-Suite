@@ -42,7 +42,10 @@ linkage section.
     01 ThisRecordId pic 9(4) value zeroes is global.
     01 NumberOfCustomers pic 9(4) value zeroes.
 
-procedure division using CustomFileName.
+procedure division.
+    goback.
+
+entry "SetCustomerFileName" using CustomFileName.
     if CustomFileName not equal to spaces
         move CustomFileName to CustomerFileName
         move CustomerFileName to BackupFileName
