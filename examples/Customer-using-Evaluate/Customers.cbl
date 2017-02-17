@@ -33,14 +33,13 @@ working-storage section.
 
     01 CustomerId   pic 9(4) value zeroes.
 
-    01 NumberOfCustomers pic 9999 value zeroes.
-
 linkage section.
     01 Command pic x any length.
     copy Customer replacing Customer by ThisCustomer.
     01 CustomerRecordId pic 9999 value zeroes.
+    01 NumberOfCustomers pic 9999 value zeroes.
 
-procedure division using Command, ThisCustomer, CustomerRecordId.
+procedure division using Command, ThisCustomer, CustomerRecordId, NumberOfCustomers.
 
     open i-o CustomersFile
     evaluate trim(Command)
@@ -145,7 +144,6 @@ GetNumberOfCustomers.
         end-read
         add 1 to NumberOfCustomers
     end-perform
-    move NumberOfCustomers to ThisCustomer
     .
 
 end program Customers.

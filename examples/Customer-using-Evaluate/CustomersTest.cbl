@@ -88,9 +88,11 @@ procedure division.
         concatenate("Delete successful, id no longer exists").
 
     call "Customers" using by content "GetNumberOfCustomers",
+        by content CustomerExpected,
+        by reference TempCustomerId,
         by reference NumberOfCustomersReturned.
     call "AssertEquals" using by content NumberOfCustomersReturned,
-        by content 2, "Number of customers returned is 2".
+        by content 2, by content "Number of customers returned is 2".
 
     stop run.
 
