@@ -10,13 +10,11 @@ echo "Running test suite..."
 echo "Running example tests..."
 echo "Customers using EVALUATE..."
 cd examples/Customer-using-Evaluate
-cobc -free Customers.cbl
-cobc -x -free -L ../.. CustomersTest.cbl
+cobc --free -x CustomersTest.cbl ../../AssertNotEquals.cbl ../../AssertEquals.cbl Customers.cbl
 ./CustomersTest
 echo "Customers using ENTRY..."
 cd ../Customer-using-Entry
-cobc -free Customers.cbl
-cobc -x -free -L ../.. CustomersTest.cbl
+cobc --free -x CustomersTest.cbl ../../AssertNotEquals.cbl ../../AssertEquals.cbl Customers.cbl
 ./CustomersTest
 cd ../..
 echo "Finished"
