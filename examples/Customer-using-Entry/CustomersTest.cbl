@@ -37,54 +37,91 @@ InitialiseCustomersFile.
     call "SetCustomerFileName" using CustomersFileName.
 
 TestCanAddACustomer.
+    *> Given
     call "AddCustomer" using by content CustomerExpected, by reference FirstCustomerId
+
+    *> When
     call "GetCustomerById" using by reference CustomerReturned, by content FirstCustomerId
+
+    *> Then
     call "AssertEquals" using by content CustomerReturned, by content CustomerExpected
         by content "Result returns the correct details for first customer".
 
+    *> When
     call "GetCustomerIdByName" using by content CustomerExpected, by reference TempCustomerId
+
+    *> Then
     call "AssertEquals" using by content TempCustomerId, by content FirstCustomerId,
         concatenate("Successfully returned 1st id of ", FirstCustomerId).
 
 TestCanAddAnotherCustomer.
+    *> Given
     move "Donald Duck" to Contact of CustomerExpected
     move "Snafu Snacks Ltd" to Name of CustomerExpected
     call "AddCustomer" using by content CustomerExpected, by reference SecondCustomerId
+
+    *> When
     call "GetCustomerById" using by reference CustomerReturned, by content SecondCustomerId
+
+    *> Then
     call "AssertEquals" using by content CustomerReturned, by content CustomerExpected
         by content "Result returns the correct details for 2nd customer".
 
+    *> When
     call "GetCustomerIdByName" using by content CustomerExpected, by reference TempCustomerId
+
+    *> Then
     call "AssertEquals" using by content TempCustomerId, by content SecondCustomerId,
         concatenate("Successfully returned 2nd id of ", SecondCustomerId).
 
 TestFirstCustomerExistsStill.
+    *> Given
     move "Foobar Widgets" to Name of CustomerExpected
     move "Micky Mouse" to Contact of CustomerExpected
+
+    *> When
     call "GetCustomerIdByName" using by content CustomerExpected, by reference TempCustomerId
+
+    *> Then
     call "AssertEquals" using by content TempCustomerId, by content FirstCustomerId,
         concatenate("Successfully returned 1st id of ", FirstCustomerId).
 
 TestCustomerDetailsCanBeUpdated.
+    *> Given
     move "Foobar Widgets Limited" to Name of CustomerExpected
     call "UpdateCustomerById" using by content CustomerExpected, by content FirstCustomerId
+
+    *> When
     call "GetCustomerIdByName" using by content CustomerExpected, by reference TempCustomerId
+
+    *> Then
     call "AssertEquals" using by content TempCustomerId,  by content FirstCustomerId,
         concatenate("Successfully returned 1st id of ", FirstCustomerId).
 
 TestNumberOfCustomersIsTwo.
+    *> Given/When
     call "GetNumberOfCustomers" using by reference NumberOfCustomersReturned
+
+    *> Then
     call "AssertEquals" using by content NumberOfCustomersReturned,
         by content 2, "Number of customers returned is 2".
 
 TestCustomerCanBeDeleted.
+    *> Given
     call "DeleteCustomerById" using by content FirstCustomerId
+
+    *> When
     call "GetCustomerIdByName" using by content CustomerExpected, by reference TempCustomerId
+
+    *> Then
     call "AssertNotEquals" using by content TempCustomerId, by content FirstCustomerId,
         concatenate("Delete successful, id no longer exists").
 
 TestNumberOfCustomersIsOne.
+    *> Given/When
     call "GetNumberOfCustomers" using by reference NumberOfCustomersReturned
+
+    *> Then
     call "AssertEquals" using by content NumberOfCustomersReturned,
         by content 1, "Number of customers returned is 1".
 
