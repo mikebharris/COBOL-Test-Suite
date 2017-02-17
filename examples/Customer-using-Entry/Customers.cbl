@@ -51,7 +51,7 @@ procedure division using CustomFileName.
     goback.
 
 entry "AddCustomer" using ThisCustomer, ThisRecordId
-    call "C$COPY" using "Customers.dat", "Backup.bak", 0
+    call "C$COPY" using CustomerFileName, BackupFileName, 0
     open i-o CustomersFile
     call "GetCustomerIdByName" using ThisCustomer, ThisRecordId
     if ThisRecordId equal to zero
