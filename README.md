@@ -13,11 +13,7 @@ _AssertNotContains(Haystack, Needle, MessageToDisplay)_ - if Needle is not in Ha
 
 To compile them in Gnu COBOL and run the tests, you will need version 1.x or 2.x of GNU Cobol.  Armed with that, do the following:
 ```
-$ cobc --free AssertEquals.cbl 
-$ cobc --free AssertNotEquals.cbl 
-$ cobc --free AssertContains.cbl 
-$ cobc --free AssertNotContains.cbl 
-$ cobc -x --free COBOLTestSuiteTest.cbl 
+$ cobc -x --free COBOLTestSuiteTest.cbl AssertEquals.cbl AssertNotEquals.cbl AssertContains.cbl AssertNotContains.cbl 
 $ ./COBOLTestSuiteTest 
 AssertEquals tests:
 Passed: integers 5 = 5 should pass
