@@ -11,7 +11,7 @@ input-output section.
         select optional CustomersFile assign to CustomerFileName
             organization is relative
             access mode is dynamic
-            record key is CustomerId
+            relative key is CustomerId
             file status is CustomerStatus.
 
 data division.
