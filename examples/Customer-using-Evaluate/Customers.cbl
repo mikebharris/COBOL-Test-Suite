@@ -22,22 +22,22 @@ file section.
             88 EndOfCustomersFile value high-values==.
 
 working-storage section.
-    01 CustomerStatus   pic x(2).
-        88 Successful   value "00".
-        88 RecordExists value "22".
-        88 NoSuchRecord value "23".
+01 CustomerStatus   pic x(2).
+    88 Successful   value "00".
+    88 RecordExists value "22".
+    88 NoSuchRecord value "23".
 
-    01 CurrentTime.
-        02 filler   pic 9(4).
-        02 Seed     pic 9(4).
+01 CurrentTime.
+    02 filler   pic 9(4).
+    02 Seed     pic 9(4).
 
-    01 CustomerId   pic 9(4) value zeroes.
+01 CustomerId   pic 9(4) value zeroes.
 
 linkage section.
-    01 Command pic x any length.
-    copy Customer replacing Customer by ThisCustomer.
-    01 CustomerRecordId pic 9999 value zeroes.
-    01 NumberOfCustomers pic 9999 value zeroes.
+01 Command pic x any length.
+copy Customer replacing Customer by ThisCustomer.
+01 CustomerRecordId pic 9999 value zeroes.
+01 NumberOfCustomers pic 9999 value zeroes.
 
 procedure division using Command, ThisCustomer, CustomerRecordId, NumberOfCustomers.
 

@@ -8,15 +8,14 @@ configuration section.
 
 data division.
 working-storage section.
+copy Customer replacing Customer by CustomerExpected.
+copy Customer replacing Customer by CustomerReturned.
 
-    copy Customer replacing Customer by CustomerExpected.
-    copy Customer replacing Customer by CustomerReturned.
-
-    01 FirstCustomerId  pic 9(4).
-    01 SecondCustomerId pic 9(4).
-    01 TempCustomerId   pic 9(4).
-    01 NumberOfCustomersReturned pic 9(4).
-    01 CustomersFileName pic x(20) value spaces.
+01 FirstCustomerId  pic 9(4).
+01 SecondCustomerId pic 9(4).
+01 TempCustomerId   pic 9(4).
+01 NumberOfCustomersReturned pic 9(4).
+01 CustomersFileName pic x(20) value spaces.
 
 procedure division.
 

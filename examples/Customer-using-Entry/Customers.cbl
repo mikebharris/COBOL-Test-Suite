@@ -22,25 +22,25 @@ file section.
             88 EndOfCustomersFile value high-values==.
 
 working-storage section.
-    01 CustomerStatus   pic x(2).
-        88 Successful   value "00".
-        88 RecordExists value "22".
-        88 NoSuchRecord value "23".
+01 CustomerStatus   pic x(2).
+    88 Successful   value "00".
+    88 RecordExists value "22".
+    88 NoSuchRecord value "23".
 
-    01 CurrentTime.
-        02 filler   pic 9(4).
-        02 Seed     pic 9(4).
+01 CurrentTime.
+    02 filler   pic 9(4).
+    02 Seed     pic 9(4).
 
-    01 CustomerId   pic 9(4) value zeroes is global.
+01 CustomerId   pic 9(4) value zeroes is global.
 
-    01 CustomerFileName pic x(20) value "Customers.dat".
-    01 BackupFileName   pic x(20) value "Customers.bak".
+01 CustomerFileName pic x(20) value "Customers.dat".
+01 BackupFileName   pic x(20) value "Customers.bak".
 
 linkage section.
-    01 CustomFileName pic x(20) value spaces.
-    copy Customer replacing Customer by ==ThisCustomer is global==.
-    01 ThisRecordId pic 9(4) value zeroes is global.
-    01 NumberOfCustomers pic 9(4) value zeroes.
+01 CustomFileName pic x(20) value spaces.
+copy Customer replacing Customer by ==ThisCustomer is global==.
+01 ThisRecordId pic 9(4) value zeroes is global.
+01 NumberOfCustomers pic 9(4) value zeroes.
 
 procedure division.
     goback.
