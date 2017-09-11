@@ -14,7 +14,9 @@ procedure division using ResultReturned,
     if function trim(ResultReturned) equal to function trim(ResultExpected) then
         display "Passed: " TestDescription
     else
-        display "Failed: " TestDescription " (expected " function trim(ResultExpected) ", got " function trim(ResultReturned) ")"
+        display "Failed: " TestDescription
+        display "  expected: " function trim(ResultExpected)
+        display "       got: " function trim(ResultReturned)
     end-if
 
     goback.
